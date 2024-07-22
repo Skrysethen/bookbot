@@ -23,13 +23,18 @@ def count_letters(words):
     return letters_counted
 
 def makeList(dict):
-    dictList = []
+    letterList = []
     tempDict = {}
     for letter in dict:
-        tempDict[letter] = dict[letter]
-        dictList.append(tempDict) 
-    print(dictList)
+        tempDict["letter"] = letter
+        tempDict["num"] = dict[letter]
+        letterList.append(tempDict)
+        tempDict = {}
 
+    return letterList
+
+def sort_on(dict):
+    return dict["num"]
 
 
 def main():
@@ -37,6 +42,9 @@ def main():
     frankenstein = read_book(pathToBook)
     count = count_words(frankenstein)
     letters = count_letters(frankenstein)
-    makeList(letters)
+    sort_list = makeList(letters)
+    sort_list.sort(reverse=True, key=sort_on)
+    print(sort_list)
+    
 
 main()
