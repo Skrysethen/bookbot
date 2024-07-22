@@ -30,21 +30,30 @@ def makeList(dict):
         tempDict["num"] = dict[letter]
         letterList.append(tempDict)
         tempDict = {}
-
     return letterList
 
 def sort_on(dict):
     return dict["num"]
 
+def rev_list(list):
+    sort_list = makeList(list)
+    sort_list.sort(reverse=True, key=sort_on)
+    return sort_list
+    
 
 def main():
     pathToBook = "books/frankenstein.txt"
     frankenstein = read_book(pathToBook)
     count = count_words(frankenstein)
     letters = count_letters(frankenstein)
-    sort_list = makeList(letters)
-    sort_list.sort(reverse=True, key=sort_on)
-    print(sort_list)
+    listOfLetters = rev_list(letters)
+    print(f"--- Begin report of book {pathToBook} ---")
+    print(f"{count} words in doc")
+    for l in listOfLetters:
+        print(f"The {l['letter']} was found {l['num']} times!")
+    print("--- EOF ---")
+
+
     
 
 main()
