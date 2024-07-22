@@ -21,14 +21,22 @@ def count_letters(words):
             letters_counted[le] = 1
     
     return letters_counted
-        
+
+def makeList(dict):
+    dictList = []
+    tempDict = {}
+    for letter in dict:
+        tempDict[letter] = dict[letter]
+        dictList.append(tempDict) 
+    print(dictList)
+
+
 
 def main():
     pathToBook = "books/frankenstein.txt"
     frankenstein = read_book(pathToBook)
     count = count_words(frankenstein)
-    print(count)
     letters = count_letters(frankenstein)
-    print(letters)
+    makeList(letters)
 
 main()
